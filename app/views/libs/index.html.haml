@@ -1,0 +1,8 @@
+.col-md-3{ng_controller: "LibraryCntl"}
+  {{lib.name}}
+  %hr
+  .namespaces{ng_repeat: "ns in lib.namespaces"}
+    %a{ng_href: "#/namespace/{{ns.name}}", href:""} {{ns.name}}
+
+.col-md-9{ng_view:true}
+  hello

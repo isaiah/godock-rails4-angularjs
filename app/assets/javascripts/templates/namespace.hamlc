@@ -1,0 +1,11 @@
+.doc
+  %h3 DocString
+  .content {{namespace.doc}}
+
+.lib_nav
+  %h3 Index
+%h6 Functions({{namespace.fuctions.length}})
+%ul
+  %li{ng_repeat: "fn in namespace.functions"}
+    %a{href: "{{fn.href}}" } {{fn.name}}
+
