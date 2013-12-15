@@ -1,7 +1,20 @@
 .col-md-9
+  .function_header
+    %h1 {{function.name}}
+    %h2
+      %span.ns
+        %a{"ng-href" => "#/{{namespace.name}}"} {{namespace.name}}
+    .usage
+      %pre{"ng-bind-html" => "function.arglists_comp"}
+
   .doc
-    %h3 DocString
-    .content{"ng-bind-html" => "namespace.doc"}
+    .content{"ng-bind-html" =>  "function.doc"}
+  .source
+    %h3 Source
+    {{function.file}}
+    .source_content
+      {{function.source}}
+
 
 .col-md-3
   .lib_nav

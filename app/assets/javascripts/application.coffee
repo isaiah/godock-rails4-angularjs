@@ -16,29 +16,33 @@
 #= require angular
 #= require angular-route
 #= require angular-resource
+#= require angular-sanitize
 #= require hamlcoffee
 #= require_tree .
 
 
-angular.module("godock", ['ngRoute', 'ngResource'])
+angular.module("godock", ['ngRoute', 'ngResource', 'ngSanitize'])
   .factory "Library", ($resource) ->
     $resource("/libraries/:id")
 
   .factory "Namespace", ($resource) ->
-    $resource("/namespaces/:id")
+    $resource("/namespaces/:ns")
+
+  .factory "Function", ($resource) ->
+    $resource("/functions/:fn")
 
   .controller "LibraryCntl", @LibraryCntl = ($scope, Library) ->
-    $scope.lib = Library.get(id:3)
+    $scope.lib = Library.get(id:1)
 
   .controller "NamespaceCntl", @NamespaceCntl = ($scope, $routeParams, Namespace) ->
     $scope.namespace = Namespace.get($routeParams)
 
-  .controller "NamespaceCntl", @NamespaceCntl = ($scope, $routeParams, Namespace) ->
+  .controller "FunctionCntl", @FunctionCntl = ($scope, $routeParams, Function, Namespace) ->
+    $scope.function = Function.get($routeParams)
     $scope.namespace = Namespace.get($routeParams)
-
 
   .config ($routeProvider) ->
-    $routeProvider.when "/ns/:id",
+    $routeProvider.when "/:ns",
       template: JST["namespace"]
       controller: NamespaceCntl
 

@@ -5,8 +5,9 @@ GodockRails4Angularjs::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'libs#index'
 
-  resources :libraries
-  resources :namespaces
+  resources :libraries, defaults: {format: :json}
+  resources :namespaces, defaults: {format: :json}
+  resources :functions, defaults: {format: :json}
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
