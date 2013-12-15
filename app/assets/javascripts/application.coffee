@@ -33,7 +33,15 @@ angular.module("godock", ['ngRoute', 'ngResource'])
   .controller "NamespaceCntl", @NamespaceCntl = ($scope, $routeParams, Namespace) ->
     $scope.namespace = Namespace.get($routeParams)
 
+  .controller "NamespaceCntl", @NamespaceCntl = ($scope, $routeParams, Namespace) ->
+    $scope.namespace = Namespace.get($routeParams)
+
+
   .config ($routeProvider) ->
-    $routeProvider.when "/namespace/:id",
+    $routeProvider.when "/ns/:id",
       template: JST["namespace"]
       controller: NamespaceCntl
+
+    $routeProvider.when "/:ns/:fn",
+      template: JST["function"]
+      controller: FunctionCntl

@@ -1,11 +1,23 @@
-.doc
-  %h3 DocString
-  .content {{namespace.doc}}
+.col-md-9
+  .doc
+    %h3 DocString
+    .content {{namespace.doc}}
 
-.lib_nav
-  %h3 Index
-%h6 Functions({{namespace.fuctions.length}})
-%ul
-  %li{ng_repeat: "fn in namespace.functions"}
-    %a{href: "{{fn.href}}" } {{fn.name}}
+.col-md-3
+  .lib_nav
+    %h3 Index
+  %h6 Functions({{namespace.fuctions.length}})
+  %ul
+    %li{ng_repeat: "fn in namespace.functions | orderBy:'name':true"}
+      %a{ng_href: "#/{{namespace.name}}/{{fn.url_friendly_name}}" } {{fn.name}}
 
+  %h6 Types({{namespace.namespace.struct_types.length}})
+  .namespaces
+    %ul
+      %li{ng_repeat: "tc in namespace.namespace.struct_types"}
+        %span
+          %a{ng_href: "#/{{namespace.name}}/{{tc.url_friendly_name}}" } {{tc.name}}
+        %ul
+          %li{ng_repeat: "f in tc.functions"}
+            %span
+              %a{ng_href: "#/{{namespace.name}}/{{tc.url_friendly_name}}/{{f.url_friendly_name}}"} {{f.name}}

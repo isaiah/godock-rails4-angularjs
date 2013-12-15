@@ -1,8 +1,8 @@
-.col-md-3{ng_controller: "LibraryCntl"}
+.col-md-2{"ng-controller" => "LibraryCntl"}
   {{lib.name}}
   %hr
-  .namespaces{ng_repeat: "ns in lib.namespaces"}
-    %a{ng_href: "#/namespace/{{ns.name}}", href:""} {{ns.name}}
+  .namespaces{"ng-repeat" => "ns in lib.namespaces | orderBy:'name' "}
+    %a{"ng-href" => "#/ns/{{ns.name}}", href:""} {{ns.name}}
 
-.col-md-9{ng_view:true}
-  hello
+.col-md-10
+  .row{"ng-view" => true}
