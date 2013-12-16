@@ -8,6 +8,7 @@ GodockRails4Angularjs::Application.routes.draw do
   resources :libraries, defaults: {format: :json}
   resources :namespaces, defaults: {format: :json}
   resources :functions, defaults: {format: :json}
+  resources :type_classes, defaults: {format: :json}
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

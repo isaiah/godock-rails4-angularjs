@@ -31,14 +31,21 @@ angular.module("godock", ['ngRoute', 'ngResource', 'ngSanitize'])
   .factory "Function", ($resource) ->
     $resource("/functions/:fn")
 
+  .factory "TypeClass", ($resource) ->
+    $resource("/type_classes/:type_class")
+
   .controller "LibraryCntl", @LibraryCntl = ($scope, Library) ->
     $scope.lib = Library.get(id:1)
 
   .controller "NamespaceCntl", @NamespaceCntl = ($scope, $routeParams, Namespace) ->
     $scope.namespace = Namespace.get($routeParams)
 
-  .controller "FunctionCntl", @FunctionCntl = ($scope, $routeParams, Function, Namespace) ->
+  .controller "FunctionCntl", @FunctionCntl = ($scope, $routeParams, Namespace, Function) ->
     $scope.function = Function.get($routeParams)
+    $scope.namespace = Namespace.get($routeParams)
+
+  .controller "TypeClassCntl", @TypeClassCntl = ($scope, $routeParams, Namespace, TypeClass) ->
+    $scope.type_class = TypeClass.get($routeParams)
     $scope.namespace = Namespace.get($routeParams)
 
   .config ($routeProvider) ->
@@ -46,6 +53,10 @@ angular.module("godock", ['ngRoute', 'ngResource', 'ngSanitize'])
       template: JST["namespace"]
       controller: NamespaceCntl
 
-    $routeProvider.when "/:ns/:fn",
+    $routeProvider.when "/:ns$:fn",
       template: JST["function"]
       controller: FunctionCntl
+
+    $routeProvider.when "/:ns/:type_class",
+      template: JST["type_class"]
+      controller: TypeClassCntl

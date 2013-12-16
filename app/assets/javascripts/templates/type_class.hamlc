@@ -1,20 +1,13 @@
 .col-md-9
-  .function_header
-    %h1 {{function.name}}
-    %h2
-      %span.ns
-        %a{"ng-href" => "#/{{namespace.name}}"} {{namespace.name}}
-    .usage
-      %pre{"ng-bind-html" => "function.arglists_comp"}
+  %h1 {{type_class.name}}
+  %h2
+    %span {{namespace.name}}
+
+  .usage
+    %pre{"ng-bind-html" => "type_class.arglists_comp"}
 
   .doc
-    .content{"ng-bind-html" =>  "function.doc"}
-  .source
-    %h3 Source
-    {{function.file}}
-    .source_content
-      {{function.source}}
-
+    .content{"ng-bind-html" => "type_class.doc"}
 
 .col-md-3
   .lib_nav
