@@ -2,7 +2,7 @@
   {{lib.name}}
   %hr
   .namespaces{"ng-repeat" => "ns in lib.namespaces | orderBy:'name' "}
-    %a{"ng-href" => "#/{{ns.name}}", href:""} {{ns.name}}
+    %a{"ng-href" => "#/{{ns.name}}"} {{ns.name}}
 
 .col-md-10
   .row{"ng-view" => true}

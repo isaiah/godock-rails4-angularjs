@@ -1,9 +1,10 @@
 class LibrariesController < ApplicationController
+  respond_to :json
   def index
-    render json: Library.last.includes(:namespaces)
+    respond_with Library.last.includes(:namespaces)
   end
 
   def show
-    render json: Library.includes(:namespaces).find(params[:id]).to_json(:include => :namespaces)
+    respond_with Library.includes(:namespaces).find(params[:id]).to_json(:include => :namespaces)
   end
 end

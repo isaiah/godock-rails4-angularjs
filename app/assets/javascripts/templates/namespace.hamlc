@@ -9,7 +9,7 @@
   %h6 Functions({{namespace.functions.length}})
   %ul
     %li{ng_repeat: "fn in namespace.functions | orderBy:'name':true"}
-      %a{ng_href: "#/{{namespace.name}}${{fn.url_friendly_name}}" } {{fn.name}}
+      %a{ng_href: "#/{{namespace.name}}.{{fn.url_friendly_name}}" } {{fn.name}}
 
   %h6 Types({{namespace.struct_types.length}})
   .namespaces
@@ -20,4 +20,4 @@
         %ul
           %li{ng_repeat: "f in tc.functions"}
             %span
-              %a{ng_href: "#/{{namespace.name}}/{{tc.name}}${{f.url_friendly_name}}"} {{f.name}}
+              %a{ng_href: "#/{{namespace.name}}/{{tc.name}}.{{f.url_friendly_name}}"} {{f.name}}

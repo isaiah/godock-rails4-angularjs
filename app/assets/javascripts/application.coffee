@@ -35,7 +35,7 @@ angular.module("godock", ['ngRoute', 'ngResource', 'ngSanitize'])
     $resource("/type_classes/:type_class")
 
   .controller "LibraryCntl", @LibraryCntl = ($scope, Library) ->
-    $scope.lib = Library.get(id:1)
+    $scope.lib = Library.get(id:3)
 
   .controller "NamespaceCntl", @NamespaceCntl = ($scope, $routeParams, Namespace) ->
     $scope.namespace = Namespace.get($routeParams)
@@ -49,14 +49,19 @@ angular.module("godock", ['ngRoute', 'ngResource', 'ngSanitize'])
     $scope.namespace = Namespace.get($routeParams)
 
   .config ($routeProvider) ->
+    $routeProvider.when "/:ns.:fn",
+      template: JST["function"]
+      controller: FunctionCntl
+
+
     $routeProvider.when "/:ns",
       template: JST["namespace"]
       controller: NamespaceCntl
 
-    $routeProvider.when "/:ns$:fn",
-      template: JST["function"]
-      controller: FunctionCntl
-
+    $routeProvider.when "/:ns/:type_class.:fn",
+      template: JST["type_class"]
+      controller: TypeClassCntl
+      
     $routeProvider.when "/:ns/:type_class",
       template: JST["type_class"]
       controller: TypeClassCntl
