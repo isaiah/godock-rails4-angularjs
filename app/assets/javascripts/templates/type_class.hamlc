@@ -22,8 +22,8 @@
     %ul
       %li{ng_repeat: "tc in namespace.struct_types"}
         %span
-          %a{ng_href: "#/{{namespace.name}}/{{tc.url_friendly_name}}" } {{tc.name}}
+          %a{ng_href: "#/{{namespace.name}}${{tc.name}}" } {{tc.name}}
         %ul
           %li{ng_repeat: "f in tc.functions"}
             %span
-              %a{ng_href: "#/{{namespace.name}}/{{tc.url_friendly_name}}.{{f.url_friendly_name}}"} {{f.name}}
+              %a{ng_href: "#/{{namespace.name}}${{tc.name}}.{{f.url_friendly_name}}"} {{f.name}}

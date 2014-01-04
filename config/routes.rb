@@ -10,6 +10,8 @@ GodockRails4Angularjs::Application.routes.draw do
   resources :functions, defaults: {format: :json}
   resources :type_classes, defaults: {format: :json}
 
+  get "search/:query" => "search#index", defaults: {format: :json}
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

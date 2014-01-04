@@ -1,8 +1,7 @@
-.col-md-2{"ng-controller" => "LibraryCntl"}
-  {{lib.name}}
-  %hr
-  .namespaces{"ng-repeat" => "ns in lib.namespaces | orderBy:'name' "}
-    %a{"ng-href" => "#/{{ns.name}}"} {{ns.name}}
+.row
+  .col-md-2{"ng-controller" => "LibraryCntl"}
+    .namespaces{"ng-repeat" => "ns in lib.namespaces | orderBy:'name' "}
+      %a{"ng-href" => "#/{{ns.name}}"} {{ns.name}}
 
-.col-md-10
-  .row{"ng-view" => true}
+  .col-md-10
+    .row{"ng-view" => true}

@@ -22,6 +22,9 @@
 
 
 angular.module("godock", ['ngRoute', 'ngResource', 'ngSanitize'])
+  .factory "SearchResult", ($resource) ->
+    $resource("/search/:term")
+
   .factory "Library", ($resource) ->
     $resource("/libraries/:id")
 
@@ -48,20 +51,27 @@ angular.module("godock", ['ngRoute', 'ngResource', 'ngSanitize'])
     $scope.type_class = TypeClass.get($routeParams)
     $scope.namespace = Namespace.get($routeParams)
 
+  .controller "SearchCntl", @SearchCntl = ($scope, SearchResult) ->
+    $scope.search = (query) ->
+      $scope.searchResult = SearchResult.get(term: query)
+
   .config ($routeProvider) ->
-    $routeProvider.when "/:ns.:fn",
+    $routeProvider.when "/:ns*.:fn",
       template: JST["function"]
       controller: FunctionCntl
 
-
-    $routeProvider.when "/:ns",
-      template: JST["namespace"]
-      controller: NamespaceCntl
-
-    $routeProvider.when "/:ns/:type_class.:fn",
+    $routeProvider.when "/:ns*$:type_class.:fn",
       template: JST["type_class"]
       controller: TypeClassCntl
       
-    $routeProvider.when "/:ns/:type_class",
+    $routeProvider.when "/:ns*$:type_class",
       template: JST["type_class"]
       controller: TypeClassCntl
+
+    $routeProvider.when "/:ns*",
+      template: JST["namespace"]
+      controller: NamespaceCntl
+
+  .directive "searchResults", ->
+    controller: SearchCntl
+    template: JST["templates/search"]
