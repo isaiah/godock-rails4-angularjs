@@ -13,6 +13,7 @@
 #= require jquery
 #= require jquery_ujs
 #= require turbolinks
+#= require foundation
 #= require angular
 #= require angular-route
 #= require angular-resource
@@ -20,6 +21,7 @@
 #= require hamlcoffee
 #= require_tree .
 
+$(document).foundation()
 
 angular.module("godock", ['ngRoute', 'ngResource', 'ngSanitize'])
   .factory "SearchResult", ($resource) ->

@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'jubilee', '~> 1.1.0.rc3'
 gem 'angularjs-rails'
 gem 'fontawesome-rails'
-gem 'bootstrap-sass'
+gem 'foundation-rails'
 gem 'haml-rails'
 
 gem 'haml_coffee_assets'
