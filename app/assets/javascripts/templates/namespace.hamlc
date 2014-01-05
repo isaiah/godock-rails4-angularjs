@@ -1,9 +1,9 @@
-.col-md-9
+.large-9.columns
   .doc
     %h3 DocString
     .content{"ng-bind-html" => "namespace.doc"}
 
-.col-md-3
+.large-3.columns
   .lib_nav
     %h3 Index
   %h6 Functions({{namespace.functions.length}})

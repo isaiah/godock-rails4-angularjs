@@ -1,5 +1,6 @@
-%form.navbar-form.navbar-right{:role => "search"}
-  .form-group
-    %input(type="text" ng-model="q" class="form-control" placeholder="Search" ng-change="search(q)" autocomplete="off")
-
-  %span(class="glyphicon glyphicon-search")
+.has-form
+  .row.collapse
+    .large-8.small-9.columns
+      %input(type="text" placeholder="Search")
+    .large-4.small-3.columns
+      %a.alert.button.expand(href="#") Search

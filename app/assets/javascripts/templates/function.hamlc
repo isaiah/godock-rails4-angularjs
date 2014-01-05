@@ -1,4 +1,4 @@
-.col-md-9
+.large-9.columns
   .function_header
     %h1 {{function.name}}
     %h2
@@ -18,7 +18,7 @@
   %ul.examples{"ng-repeat": "example in function.all_versions_examples"}
     %li {{example.body}}
 
-.col-md-3
+.large-3.columns
   .lib_nav
     %h3 Index
   %h6 Functions({{namespace.functions.length}})

@@ -1,7 +1,7 @@
 .row
-  .col-md-2{"ng-controller" => "LibraryCntl"}
+  .columns.large-2{"ng-controller" => "LibraryCntl"}
     .namespaces{"ng-repeat" => "ns in lib.namespaces | orderBy:'name' "}
       %a{"ng-href" => "#/{{ns.name}}"} {{ns.name}}
 
-  .col-md-10
+  .large-10.columns
     .row{"ng-view" => true}

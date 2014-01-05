@@ -1,43 +1,38 @@
 !!!
 %html
   %head
-    %title Godock - Community powered Golang documentation and examples
+    %meta(charset="utf-8")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title= content_for?(:title) ? yield(:title) : "Godock - Community powered Golang documentation and examples"
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-    = javascript_include_tag "application", "data-turbolinks-track" => true
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
-    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
   %body
     #wrap{"ng-app" => "godock"}
-      .navbar.navbar-default.navbar-fixed-top.bs-docs-nav{:role => "navigation"}
-        .container
-          .navbar-header
-            %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-              %span.sr-only Toggle navigation
-              %span.icon-bar
-              %span.icon-bar
-              %span.icon-bar
-            %a.navbar-brand{:href => "#"} GoDock
-          %div{"search-results" => true}
-      #content.bs-header(ng-controller="SearchCntl")
-        .search-results-list
-          .search-group.col-md-4{"ng-repeat" => "func in searchResult.Function"}
-            .func {{func.name}}
-          .search-group.col-md-4{"ng-repeat" => "func in searchResult.TypeClass"}
-            .tc {{func.name}}
-          .search-group.col-md-4{"ng-repeat" => "func in searchResult.Namespace"}
-            .ns {{func.name}}
-      .container
-        %ul.nav.nav-tabs
-          %li.active
-            %a{:href => "#"} gopkg
-          %li
-            %a{:href => "#"} martini
-          %li
-            %a{:href => "#"} mgo
-
+      %nav.top-bar{"data-topbar" => true}
+        %ul.title-area
+          %li.name
+            %h1
+              %a.navbar-brand{:href => "#"} GoDock
+        %section.top-bar-section
+          // right nav section
+          %ul.right
+            %li{"search-results" => true}
+          %ul.left
+            %li.divider
+            %li
+              %a{:href => "#"} gopkg
+            %li.divider
+            %li
+              %a{:href => "#"} martini
+            %li.divider
+            %li
+              %a{:href => "#"} mgo
+            %li.divider
       .container
         = yield
       #footer
         .container
           %p.text-muted &copy;Copyright 2013 Isaiah P.
+
+      = javascript_include_tag "application", "data-turbolinks-track" => true

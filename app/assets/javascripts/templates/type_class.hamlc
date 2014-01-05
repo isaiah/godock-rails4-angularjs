@@ -1,4 +1,4 @@
-.col-md-9
+.large-9.columns
   %h1 {{type_class.name}}
   %h2
     %span {{namespace.name}}
@@ -9,7 +9,7 @@
   .doc
     .content{"ng-bind-html" => "type_class.doc"}
 
-.col-md-3
+.large-3.columns
   .lib_nav
     %h3 Index
   %h6 Functions({{namespace.functions.length}})
